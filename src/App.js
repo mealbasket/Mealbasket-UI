@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Header from './Components/Layout/Header.js';
-import Footer from './Components/Layout/Footer.js';
-import Home from './Components/Home.js';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Home from './components/Home';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div>
-          <Header />
-          <div className="container">
-            <Route exact path='/' component={Home} />
+          <Navbar />
+          <div className="container py-5">
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/sign-in' component={SignIn} />
+              <Route exact path='/sign-up' component={SignUp} />
+            </Switch>
+            <Footer />
           </div>
-          <Footer />
         </div>
       </BrowserRouter>
     );
